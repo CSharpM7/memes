@@ -24,7 +24,7 @@ fn global_fighter_frame(fighter: &mut L2CFighterCommon) {
         let category = smash::app::utility::get_category(boma);
         let kind = smash::app::utility::get_kind(boma);
         if [*BATTLE_OBJECT_CATEGORY_WEAPON,*BATTLE_OBJECT_CATEGORY_FIGHTER].contains(&category) {
-            common_update(fighter);
+            //common_update(fighter);
         }
     }
 }

@@ -12,7 +12,6 @@ unsafe fn game_throwb(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 22.0);
     if macros::is_excute(agent) {
-        println!("ACMD Hold check");
         WorkModule::on_flag(agent.module_accessor, fighter::instance::flag::THROW_SMASH_HOLD);
     }
     frame(agent.lua_state_agent, 38.0-12.0);
@@ -143,10 +142,14 @@ unsafe fn game_throwbcharge(agent: &mut L2CAgentBase) {
 
 #[acmd_script( agent = "wario", script = "effect_throwbcharge", category = ACMD_EFFECT)]
 unsafe fn effect_throwbcharge(agent: &mut L2CAgentBase) {
+    if macros::is_excute(agent) {
+        macros::EFFECT(agent, Hash40::new("sys_smash_flash"), Hash40::new("throw"), 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, true);
+    }
     frame(agent.lua_state_agent, 5.0);
     for i in 0..i32::MAX {
         if macros::is_excute(agent) {
-            macros::LANDING_EFFECT_FLIP(agent, Hash40::new("sys_whirlwind_l"), Hash40::new("sys_whirlwind_r"), Hash40::new("top"), 0, 0, 0, 0, 0, 0, 0.7, 0, 0, 0, 0, 0, 0, false, *EF_FLIP_NONE);
+            //macros::LANDING_EFFECT_FLIP(agent, Hash40::new("sys_whirlwind_l"), Hash40::new("sys_whirlwind_r"), Hash40::new("top"), 0, 0, 0, 0, 0, 0, 0.7, 0, 0, 0, 0, 0, 0, false, *EF_FLIP_NONE);
+            macros::EFFECT_FOLLOW_FLIP(agent, Hash40::new("sys_whirlwind_l"), Hash40::new("sys_whirlwind_r"), Hash40::new("top"), 0, 0, 0, 0, 0, 0, 0.7, false, *EF_FLIP_NONE);
         }
         for j in 0..3 {
             wait(agent.lua_state_agent, 5.0);

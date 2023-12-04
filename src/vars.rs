@@ -13,7 +13,8 @@ pub mod fighter {
             pub const THROW_SMASH_HOLD_KEEP_FRAME : i32 = 0x1100000f;
         }
         pub mod float {
-            pub const THROW_SMASH_RESTART_FRAME : i32 = 0x1000008;
+            pub const THROW_SMASH_CLATTER_START : i32 = 0x1000008;
+            pub const THROW_SMASH_RESTART_FRAME : i32 = 0x1000009;
         }
     }
 }
