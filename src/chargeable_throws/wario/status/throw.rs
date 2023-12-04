@@ -1,5 +1,7 @@
 use crate::imports::imports_agent::*;
+use crate::chargeable_throws::vars::*;
 
+//Let wario move during backthrow
 #[status_script(agent = "wario", status = FIGHTER_STATUS_KIND_THROW, condition = LUA_SCRIPT_STATUS_FUNC_EXEC_STATUS)]
 unsafe fn throw_exec(fighter: &mut L2CFighterCommon) -> L2CValue {
     let motion = MotionModule::motion_kind(fighter.module_accessor);

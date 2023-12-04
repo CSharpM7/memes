@@ -6,8 +6,6 @@ pub fn installer() {
 }
 
 pub fn install() {
-    //buddy::install();
     //pickel::install();
-    common::install();
-    wario::install();
+    chargeable_throws::install();
 }

@@ -14,13 +14,11 @@
 extern crate lazy_static;
 
 mod pickel;
-mod wario;
-mod common;
+mod chargeable_throws;
 mod installer;
 
 mod imports;
 //mod custom_vars;
-pub mod vars;
 pub mod data;
 use data::gamemode::*;
 
@@ -36,7 +34,6 @@ extern "C"{
 #[skyline::main(name = "smashline_memes")]
 pub fn main() {
     data::gamemode::set_gamemode();
-    //custom_vars::install();
     //data::install();
 
     println!("[smashline_memes::main] Loading...");

@@ -1,4 +1,5 @@
 use crate::imports::imports_agent::*;
+use crate::chargeable_throws::vars::*;
 
 #[skyline::hook(replace = L2CFighterCommon_status_Throw_Sub)]
 unsafe extern "C" fn throw_main(fighter: &mut L2CFighterCommon) -> L2CValue {
@@ -56,7 +57,10 @@ unsafe extern "C" fn throw_main_loop(fighter: &mut L2CFighterCommon) -> L2CValue
                 let clatter_frame_base = WorkModule::get_param_int(fighter.module_accessor, hash40("common"), hash40("capture_cut_frame")) as f32; 
                 let opponent_damage = DamageModule::damage(opponent, 0);
                 let clatter_frame_add = opponent_damage * damage_frame_mul; 
-                let clatter_frame =  clatter_start + (clatter_frame_base + clatter_frame_add)*0.25;
+                let clatter_add_mul = 0.25;
+                //Cap the new clatter time at whatever the max would be for a normal grab
+                let clatter_max = clatter_frame_base + clatter_frame_add;
+                let clatter_frame = clatter_max.min(clatter_start + (clatter_frame_base + clatter_frame_add)*clatter_add_mul);
 
                 println!("Init: {clatter_start} Base: {clatter_frame_base} Add: {clatter_frame_add} Clatter: {clatter_frame}");
                 ControlModule::set_clatter_time(opponent, clatter_frame, 0);

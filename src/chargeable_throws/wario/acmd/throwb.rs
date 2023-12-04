@@ -1,4 +1,5 @@
 use crate::imports::imports_acmd::*;
+use crate::chargeable_throws::vars::*;
 
 #[acmd_script( agent = "wario", script = "game_throwb", category = ACMD_GAME)]
 unsafe fn game_throwb(agent: &mut L2CAgentBase) {

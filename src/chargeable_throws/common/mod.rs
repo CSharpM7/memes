@@ -1,11 +1,11 @@
-mod agent;
+//mod agent;
 //mod acmd;
 mod status;
-mod frame;
+//mod frame;
 
 pub fn install() {
     //acmd::install();
-    agent::install();
-    frame::install();
+    //agent::install();
+    //frame::install();
     status::install();
 }
